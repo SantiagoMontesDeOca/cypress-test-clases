@@ -1,4 +1,8 @@
 # cypress-test-clase
-**Ejercicio 4**<br>
-Ejercicio de un curso de FlamaTest<br>
-Es parte de este Portfolio en construcción 🏗️ .<br>
+**Ejercicio 4**
+
+
+Ejercicio de un curso de FlamaTest
+
+
+Es parte de este Portfolio en construcción 🏗️ .
