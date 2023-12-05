@@ -1,5 +1,6 @@
 describe('Pruebas heroku app', () => {
-  it('1 login con usuario y contraseña validos', () => {
+  
+  it('1 login con usuario y contraseña válidos', () => {
     cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
     cy.get('#username').type("tomsmith")
@@ -8,7 +9,7 @@ describe('Pruebas heroku app', () => {
     cy.get('#flash').contains (" You logged into a secure area!")
 
   })
-  it('2 login con usuario invalido y contraseña valida', () => {
+  it('2 login con usuario inválido y contraseña válida', () => {
     cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
     cy.get('#username').type("T!!!++")
@@ -17,7 +18,7 @@ describe('Pruebas heroku app', () => {
     cy.get('#flash').contains ("Your username is invalid!")
   })
 
-  it('3 login con usuario valido y contraseña inválida', () => {
+  it('3 login con usuario válido y contraseña inválida', () => {
     cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
     cy.get('#username').type("tomsmith")
@@ -26,7 +27,7 @@ describe('Pruebas heroku app', () => {
     cy.get('#flash').contains ("Your password is invalid!")
   })
 
-  it('4 login con usuario invalido y contraseña inválida', () => {
+  it('4 login con usuario y contraseña inválidos', () => {
     cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
     cy.get('#username').type("TomSmith!!")
