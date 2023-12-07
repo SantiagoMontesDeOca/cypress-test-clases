@@ -1,8 +1,7 @@
 # cypress-test-clase
-**Ejercicio 4**
 
 
-Ejercicio de un curso de FlamaTest
+## Ejercicios de Flama Test
 
 
-Es parte de este Portfolio en construcción 🏗️ .
+**Grande Fran! Gracias 🙏** 
