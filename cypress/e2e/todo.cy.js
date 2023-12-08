@@ -3,7 +3,7 @@
 describe('Ejercicios Cypress TODO', () => {
   
   /* "it" es una función para definir un caso de prueba individual".*/
-
+/*INICIO corte con comentario aca
   it('1.Crear tarea', () => {
 
       // Ingresa el nombre de una tarea en el campo de texto. 
@@ -97,9 +97,11 @@ describe('Ejercicios Cypress TODO', () => {
       // Verifica que la tarea se elimine correctamente de la lista.
       cy.get('.view > label').should('not.exist');
 
-      
+   
     })
 
+    //voy a ortat comentario aca
+*/   
     it('6. Filtrar tareas', () => {
 
       // Agrega varias tareas a la lista, algunas completadas y otras no completadas.
@@ -120,16 +122,17 @@ describe('Ejercicios Cypress TODO', () => {
       cy.get(":nth-child(2) > .view > .toggle").should('be.checked');
       cy.get(":nth-child(3) > .view > .toggle").should('be.checked');
       cy.get(":nth-child(5) > .view > .toggle").should('be.checked');
-      
+     
       // Haz clic en el botón de filtro correspondiente a las tareas completadas.
-      cy.get('[data-reactid=".0.2.1.4"] > a').click();;
+      cy.get('[data-reactid=".0.2.1.4"] > a').click();
       
       // Verifica que solo se muestren las tareas completadas en la lista.
+      cy.get('.todo-list .completed').should('have.length', 3);
         
-      cy.get('.todo-list li').should('not.exist')
-       
-      // Verifica que solo se muestren las tareas completadas en la lista.
-      
+      cy.get('.todo-list li').contains('Hacer la Tarea.');
+      cy.get('.todo-list li').contains('Escribir un discurso motivacional las medias.');
+      cy.get('.todo-list li').contains('Escribir la carta de agradecimiento.');
+           
 
     });
 
