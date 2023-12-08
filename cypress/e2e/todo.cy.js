@@ -105,35 +105,42 @@ describe('Ejercicios Cypress TODO', () => {
       // Agrega varias tareas a la lista, algunas completadas y otras no completadas.
       
       cy.visit('https://todomvc.com/examples/react/#/')
-      cy.get('.new-todo').type('{enter}').type('Organizar una competición de carreras de caracoles en el jardín (con premios){enter}');
-      cy.get('.new-todo').type('{enter}').type('Enseñarle a una de mis planta a bailar Tango{enter}');
-      cy.get('.new-todo').type('{enter}').type('Escribir un discurso motivacional para mis calcetines{enter}');
-      cy.get('.new-todo').type('{enter}').type('Realizar una entrevista seria a mis zapatillas{enter}');
-      cy.get('.new-todo').type('{enter}').type('Escribir una carta de agradecimiento a nuestra nevera{enter}');
-
-      // Marcar como completas
-      cy.get('[data-reactid=".0.1.2.$4ef2ab3a-297f-438d-bc40-07f302ad286e"] > .view > .toggle').click();
-
-    
-
-
-
-      // Verifica que la tarea se agregue correctamente a la lista.
-
+      cy.get('.new-todo').type('{enter}').type('Llamar a Fer.{enter}');
+      cy.get('.new-todo').type('{enter}').type('Hacer la Tarea.{enter}');
+      cy.get('.new-todo').type('{enter}').type('Escribir un discurso motivacional las medias.{enter}');
+      cy.get('.new-todo').type('{enter}').type('Hacerle una entrevista a las zapatillas.{enter}');
+      cy.get('.new-todo').type('{enter}').type('Escribir la carta de agradecimiento.{enter}');
       
-         
-    })
+      //Tareas completadas..
+      cy.get(":nth-child(2) > .view > .toggle").click();
+      cy.get(":nth-child(3) > .view > .toggle").click();
+      cy.get(":nth-child(5) > .view > .toggle").click();
+      
+      //Chequeo de check como completadas. 
+      cy.get(":nth-child(2) > .view > .toggle").should('be.checked');
+      cy.get(":nth-child(3) > .view > .toggle").should('be.checked');
+      cy.get(":nth-child(5) > .view > .toggle").should('be.checked');
+      
+      // Haz clic en el botón de filtro correspondiente a las tareas completadas.
+      cy.get('[data-reactid=".0.2.1.4"] > a').click();;
+      
+      // Verifica que solo se muestren las tareas completadas en la lista.
+        
+      cy.get('.todo-list li').should('not.exist')
+       
+      // Verifica que solo se muestren las tareas completadas en la lista.
+      
+
+    });
 
 
-
-})
-
+});
 
 /*6. Filtrar tareas:
 ● Agrega varias tareas a la lista, algunas completadas y otras no completadas.
-
 ● Haz clic en el botón de filtro correspondiente a las tareas completadas.
 ● Verifica que solo se muestren las tareas completadas en la lista.
+
 ● Haz clic en el botón de filtro correspondiente a las tareas no completadas.
 ● Verifica que solo se muestren las tareas no completadas en la lista.
 ● Haz clic en el botón "All" para volver a mostrar todas las tareas en la lista.
