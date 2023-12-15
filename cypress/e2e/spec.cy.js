@@ -35,6 +35,6 @@ describe('Pruebas heroku app', () => {
     cy.get('.fa').click()
     cy.get('#flash').contains ("Your username is invalid!")
   })
-  nmkda
+  
 
 })

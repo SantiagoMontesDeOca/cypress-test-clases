@@ -147,7 +147,6 @@ describe('Ejercicios Cypress TODO', () => {
       cy.get('.todo-list li').contains('Hacerle una entrevista a las zapatillas.');
       cy.get('.todo-list li').contains('Escribir la carta de agradecimiento.');
 
-
     });
 
 });
