@@ -1,7 +1,11 @@
 /* "Describe" es un una función que se utiliza para agrupar y organizar los casos de prueba.*/
 
 describe('Ejercicios Cypress TODO', () => {
-  
+  beforeEach(() => {
+    cy.visit('https://todomvc.com/examples/react/#/');
+  borrarlo de los otros it
+  });
+
   /* "it" es una función para definir un caso de prueba individual".*/
 
   it('1.Crear tarea', () => {
