@@ -1,17 +1,21 @@
 /// <reference types="cypress" />
 
 export class LoginPage {
+
+     // Hacer Login.
     EnterUserName() {
-        cy.type('text');
-        cy.get('#Username') .type ('text')
+
+       cy.get('#Username').type('text'); 
+
     };
     
     EnterPassword() {
-        
+        cy.get('#password').type('text');
+    
     };
     
     ClickLogin() {
-        
+        cy.get('.fa').click();
     };
 
 };
