@@ -3,18 +3,18 @@
 export class LoginPage {
 
      // Hacer Login.
-    EnterUserName() {
+    enterUserName(text) {
 
-       cy.get('#Username').type('text'); 
+       cy.get('#username').type(text); 
 
     };
     
-    EnterPassword() {
-        cy.get('#password').type('text');
+    enterPassword(text) {
+        cy.get('#password').type(text);
     
     };
     
-    ClickLogin() {
+    clickLogin() {
         cy.get('.fa').click();
     };
 

@@ -3,12 +3,12 @@
 export class SecureAreaPage {
 // Verificar que se inició sesión de manera exitosa.
 
-        VerifyLoginMessage() {
+        checkMessage(text) {
 
-         cy.get('#flash').contains();
+         cy.get('#flash').contains(text);
     
-        };
+        }
 
         
-};
+}
 
