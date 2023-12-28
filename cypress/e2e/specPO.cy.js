@@ -33,7 +33,7 @@ import { SecureAreaPage } from "../page-objects/secure-area-page.js";
             });
 
             it('3 login with valid user and invalid password', () => {
-                cy.get('#username').type("tomsmith");
+                loginPage.enterUserName("tomsmith");
                 loginPage.enterPassword("+e");
                 loginPage.clickLogin();
                 secureAreaPage.checkMessage("Your password is invalid!");
@@ -46,5 +46,4 @@ import { SecureAreaPage } from "../page-objects/secure-area-page.js";
                 secureAreaPage.checkMessage("Your username is invalid!");
             });
         
-    });     
-    
+    }); 
