@@ -9,7 +9,6 @@ describe('Pruebas heroku app', () => {
     cy.get('#username').type("tomsmith");
     cy.get('#password').type("SuperSecretPassword!");
     cy.get('.fa').click();
-    //Aquí, la refactorización es el ingrediente secreto que falta.
     cy.get('#flash').contains(" You logged into a secure area!");
 
   });

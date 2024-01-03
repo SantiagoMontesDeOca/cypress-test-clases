@@ -3,7 +3,7 @@
 describe('Ejercicios Cypress TODO', () => {
   beforeEach(() => {
     cy.visit('https://todomvc.com/examples/react/#/');
-    //Aquí hay espacio para la magia de refactorización.
+    
   });
 
   /* "it" es una función para definir un caso de prueba individual".*/
@@ -19,7 +19,7 @@ describe('Ejercicios Cypress TODO', () => {
 
       cy.get('.view > label').contains('Tarea 1: Tengo un plan');
          
-    })
+    });
 
 
   it('2. Marcar tarea como completada', () => {

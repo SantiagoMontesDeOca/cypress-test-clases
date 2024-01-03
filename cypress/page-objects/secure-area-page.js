@@ -7,7 +7,7 @@ export class SecureAreaPage {
 
          cy.get('#flash').contains(text);
     
-        }
+        };
 
         
 }
