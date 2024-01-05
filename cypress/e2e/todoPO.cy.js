@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { TodoReactPage} from "../page-objects/todomvc-react-page.js";
+import { TodoReactPage } from "../page-objects/todomvc-react-page.js";
 
 
     describe("Pruebas-todo-react", () => {
