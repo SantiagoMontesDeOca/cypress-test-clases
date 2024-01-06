@@ -10,5 +10,5 @@ export class SecureAreaPage {
         };
 
         
-}
+};
 
