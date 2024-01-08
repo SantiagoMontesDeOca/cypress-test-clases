@@ -26,7 +26,7 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.newTodo("Tarea 1: Tengo un plan");
 
         // Haz clic en el botón de marca de verificación junto a la tarea.
-        todoReactPage.clickCheckBox();
+        todoReactPage.clickToggleByNthChild(1);
 
         // Verifica que la tarea se marque como completada.
         todoReactPage.checkCompletedTask();
@@ -39,10 +39,10 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.newTodo("Tarea 2: Ejecutando el PLAN");
 
         // Haz clic en el botón de marca de verificación junto a la tarea.
-        todoReactPage.clickCheckBox();
+        todoReactPage.clickToggleByNthChild(1);
 
         // Haz clic nuevamente en el botón de marca de verificación para desmarcar la tarea.
-        todoReactPage.clickCheckBox();
+        todoReactPage.clickToggleByNthChild(1);
 
         // Verifica que la tarea se muestre como no completada.
         todoReactPage.verifyTaskNotCompleted();
@@ -59,12 +59,12 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.doubleClickLabelAndClear();
   
         // Ingresa un nuevo nombre para la tarea y presiona la tecla "Enter".
-        cy.get('.edit').type('MAY THE FORCE BE WITH YOU {enter}');
-  
+         //cy.get('.edit').type('MAY THE FORCE BE WITH YOU {enter}');
+        todoReactPage.enterNewTaskNameAndPressEnter('MAY THE FORCE BE WITH YOU');
+
         // Verifica que el nombre de la tarea se actualice correctamente en la lista.
-        cy.get('.view > label').contains('MAY THE FORCE BE WITH YOU');
-  
-             
+        todoReactPage.verifyTaskLabelContains('MAY THE FORCE BE WITH YOU');
+               
     });
 
     it('5. Borrar tarea', () => {
@@ -74,10 +74,9 @@ describe("Pruebas-todo-react", () => {
     
         // Haz clic en el botón "X" junto a la tarea para eliminarla.
         // Al tener un estilo:hover, por lo que debo hacer aparecer la "x" para eliminarla
-        cy.get('.view > label').siblings('.destroy').invoke('show').click();
-  
+        todoReactPage.showAndClickDestroyButton();
         // Verifica que la tarea se elimine correctamente de la lista.
-        cy.get('.view > label').should('not.exist');
+        todoReactPage.verifyElementNotExists();
   
      
     });
@@ -91,16 +90,21 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.newTodo("Hacerle una entrevista a las zapatillas.");
         todoReactPage.newTodo("Escribir la carta de agradecimiento.");
 
-        //Tareas completadas..
-        cy.get(":nth-child(2) > .view > .toggle").click();
-        cy.get(":nth-child(3) > .view > .toggle").click();
-        cy.get(":nth-child(5) > .view > .toggle").click();
-        
+        // Click para marcar como tareas completadas.
+        todoReactPage.clickToggleByNthChild(2);
+        todoReactPage.clickToggleByNthChild(3);
+        todoReactPage.clickToggleByNthChild(5);
+
         //Chequeo de check como completadas. 
         cy.get(":nth-child(2) > .view > .toggle").should('be.checked');
         cy.get(":nth-child(3) > .view > .toggle").should('be.checked');
         cy.get(":nth-child(5) > .view > .toggle").should('be.checked');
-       
+       // todoReactPage.verifyElementChecked(2);
+        //todoReactPage.verifyElementChecked(3);
+        //todoReactPage.verifyElementChecked(5);
+
+
+
         // Haz clic en el botón de filtro correspondiente a las tareas completadas. 
         cy.get('[data-reactid=".0.2.1.4"] > a').click();
               

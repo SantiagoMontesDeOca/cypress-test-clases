@@ -13,19 +13,29 @@ export class TodoReactPage {
   
     // Ingresa el nombre de una tarea en el campo de texto y presiona "Enter".     
     newTodo(text) {
-      cy.get('.new-todo').type(text + '{enter}');
-
-    };
+      cy.get('.new-todo').type(`${text}{enter}`);
+    }
 
     // Double-click on the task label, focus on it, and clear the content.
     doubleClickLabelAndClear() {
       cy.get('.view > label').dblclick().focused().clear();
     };
+
+    // Enter a new name for the task and press the "Enter" key.
+    enterNewTaskNameAndPressEnter(newTaskName) {
+     cy.get('.edit').type(`${newTaskName}{enter}`);
+
+    };
+
+    // Verify that the task label contains 'MAY THE FORCE BE WITH YOU'.
+    verifyTaskLabelContains(text) {
+      cy.get('.view > label').contains(text);
+    };
   
-    // Haz clic en el botón de marca de verificación junto a la tarea.
-    clickCheckBox() {
-      cy.get('input.toggle').click();
-      
+    // Click on a specific toggle element based on its nth-child position.
+    clickToggleByNthChild(position) {
+      cy.get(`:nth-child(${position}) > .view > .toggle`).click();
+    
     };
       
     // Verifica que la tarea se marque como completada.
@@ -46,6 +56,11 @@ export class TodoReactPage {
     
     };
 
+    // Verify that a specific element, identified by its position, is checked.
+     verifyElementChecked(position) {
+      cy.get(`.view > .toggle:nth-child(${position})`).should('be.checked');
+    
+    };
 
     // Verify that the task is displayed as not completed.
     verifyTaskNotCompleted() {
@@ -56,6 +71,18 @@ export class TodoReactPage {
     // Verify there are exactly N INcompleted tasks
     verifyIncompleteTasksCount(count) {
       cy.get('.todo-list li').should('have.length', count);
+    
+    };
+
+    // Show and click on the destroy button next to the task label.
+    showAndClickDestroyButton() {
+      cy.get('.view > label').siblings('.destroy').invoke('show').click();
+    
+    };
+
+    // Verify that the element is not present.
+    verifyElementNotExists() {
+      cy.get('.view > label').should('not.exist');
     
     };
 
