@@ -16,8 +16,8 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.newTodo("Tarea 1: Tengo un plan");
         
         // Verifica que la tarea se agregue correctamente a la lista.
-        cy.get('.view > label').contains('Tarea 1: Tengo un plan');
-    
+        todoReactPage.verifyTaskPresent('Tarea 1: Tengo un plan')
+           
     });
 
     it('2. Marcar tarea como completada', () => {
@@ -45,7 +45,8 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.clickCheckBox();
 
         // Verifica que la tarea se muestre como no completada.
-        cy.get('input.toggle').should('not.checked');
+        todoReactPage.verifyTaskNotCompleted();
+       
     
     });
 
@@ -55,15 +56,12 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.newTodo("Tarea 3: May the force be with me");
           
         // Haz doble clic en el texto de la tarea para editarlo.
+        todoReactPage.doubleClickLabelAndClear();
   
-        cy.get('.view > label').dblclick().focused().clear();
-  
-        //Ingresa un nuevo nombre para la tarea y presiona la tecla "Enter".
-        
+        // Ingresa un nuevo nombre para la tarea y presiona la tecla "Enter".
         cy.get('.edit').type('MAY THE FORCE BE WITH YOU {enter}');
   
         // Verifica que el nombre de la tarea se actualice correctamente en la lista.
-  
         cy.get('.view > label').contains('MAY THE FORCE BE WITH YOU');
   
              
@@ -107,28 +105,36 @@ describe("Pruebas-todo-react", () => {
         cy.get('[data-reactid=".0.2.1.4"] > a').click();
               
         // Verifica que solo se muestren las tareas completadas en la lista.
-        cy.get('.todo-list .completed').should('have.length', 3);
-        cy.get('.todo-list li').contains('Hacer la Tarea.');
-        cy.get('.todo-list li').contains('Escribir un discurso motivacional las medias.');
-        cy.get('.todo-list li').contains('Escribir la carta de agradecimiento.');
-        
+        todoReactPage.verifyCompletedTasksCount(3);
+        todoReactPage.verifyTaskPresent('Hacer la Tarea');
+        todoReactPage.verifyTaskPresent('Hacer la Tarea.');
+        todoReactPage.verifyTaskPresent('Escribir un discurso motivacional las medias.');
+        todoReactPage.verifyTaskPresent('Escribir la carta de agradecimiento.');    
+
+
         //Haz clic en el botón de filtro correspondiente a las tareas no completadas.
         cy.get('[data-reactid=".0.2.1.2"] > a').click();
         
         //Verifica que solo se muestren las tareas no completadas en la lista.
-        cy.get('.todo-list li').should('have.length', 2);
-        cy.get('.todo-list li').contains('Llamar a Fer.');
-        cy.get('.todo-list li').contains('Hacerle una entrevista a las zapatillas.');
-  
-        //Haz clic en el botón "All" para volver a mostrar todas las tareas en la lista.
+        todoReactPage.verifyIncompleteTasksCount(2);
+        todoReactPage.verifyTaskPresent('Llamar a Fer.');
+        todoReactPage.verifyTaskPresent('Hacerle una entrevista a las zapatillas.');
+
+       //Haz clic en el botón "All" para volver a mostrar todas las tareas en la lista.
         cy.get('[data-reactid=".0.2.1.0"] > a').click();
-        cy.get('.todo-list li').should('have.length', 5);
-        cy.get('.todo-list li').contains('Llamar a Fer.');
-        cy.get('.todo-list li').contains('Hacer la Tarea.');
-        cy.get('.todo-list li').contains('Escribir un discurso motivacional las medias.');
-        cy.get('.todo-list li').contains('Hacerle una entrevista a las zapatillas.');
-        cy.get('.todo-list li').contains('Escribir la carta de agradecimiento.');
-  
+        
+        todoReactPage.verifyIncompleteTasksCount(5);
+        todoReactPage.verifyTaskPresent('Llamar a Fer.');
+        todoReactPage.verifyTaskPresent('Hacer la Tarea.');
+        todoReactPage.verifyTaskPresent('Escribir un discurso motivacional las medias.');
+        todoReactPage.verifyTaskPresent('Hacerle una entrevista a las zapatillas.');
+        todoReactPage.verifyTaskPresent('Escribir la carta de agradecimiento.');
+
+        
+        
+        
+        
+        
     });
 
 
