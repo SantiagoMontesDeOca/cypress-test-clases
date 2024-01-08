@@ -47,7 +47,6 @@ describe("Pruebas-todo-react", () => {
         // Verifica que la tarea se muestre como no completada.
         todoReactPage.verifyTaskNotCompleted();
        
-    
     });
 
     it('4. Editar tarea', () => {
@@ -75,6 +74,7 @@ describe("Pruebas-todo-react", () => {
         // Haz clic en el botón "X" junto a la tarea para eliminarla.
         // Al tener un estilo:hover, por lo que debo hacer aparecer la "x" para eliminarla
         todoReactPage.showAndClickDestroyButton();
+        
         // Verifica que la tarea se elimine correctamente de la lista.
         todoReactPage.verifyElementNotExists();
   
@@ -95,18 +95,13 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.clickToggleByNthChild(3);
         todoReactPage.clickToggleByNthChild(5);
 
-        //Chequeo de check como completadas. 
-        cy.get(":nth-child(2) > .view > .toggle").should('be.checked');
-        cy.get(":nth-child(3) > .view > .toggle").should('be.checked');
-        cy.get(":nth-child(5) > .view > .toggle").should('be.checked');
-       // todoReactPage.verifyElementChecked(2);
-        //todoReactPage.verifyElementChecked(3);
-        //todoReactPage.verifyElementChecked(5);
-
-
+        // Chequeo de check como completadas. 
+        todoReactPage.checkCheckboxByPosition(2);
+        todoReactPage.checkCheckboxByPosition(3);
+        todoReactPage.checkCheckboxByPosition(5);
 
         // Haz clic en el botón de filtro correspondiente a las tareas completadas. 
-        cy.get('[data-reactid=".0.2.1.4"] > a').click();
+        todoReactPage.clickFilterCompletedTasks();
               
         // Verifica que solo se muestren las tareas completadas en la lista.
         todoReactPage.verifyCompletedTasksCount(3);
@@ -116,17 +111,18 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.verifyTaskPresent('Escribir la carta de agradecimiento.');    
 
 
-        //Haz clic en el botón de filtro correspondiente a las tareas no completadas.
-        cy.get('[data-reactid=".0.2.1.2"] > a').click();
+        // Haz clic en el botón de filtro correspondiente a las tareas no completadas.
+        todoReactPage.clickFilterIncompletedTasks();
         
         //Verifica que solo se muestren las tareas no completadas en la lista.
         todoReactPage.verifyIncompleteTasksCount(2);
         todoReactPage.verifyTaskPresent('Llamar a Fer.');
         todoReactPage.verifyTaskPresent('Hacerle una entrevista a las zapatillas.');
 
-       //Haz clic en el botón "All" para volver a mostrar todas las tareas en la lista.
-        cy.get('[data-reactid=".0.2.1.0"] > a').click();
-        
+        // Haz clic en el botón "All" para volver a mostrar todas las tareas en la lista.
+        todoReactPage.clickFilterAllTasks();
+
+        // Verifies that there are exactly 5 incomplete tasks and checks the presence of specific tasks in the list.
         todoReactPage.verifyIncompleteTasksCount(5);
         todoReactPage.verifyTaskPresent('Llamar a Fer.');
         todoReactPage.verifyTaskPresent('Hacer la Tarea.');
@@ -135,15 +131,6 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.verifyTaskPresent('Escribir la carta de agradecimiento.');
 
         
-        
-        
-        
-        
     });
-
-
-
-
-
 
 });
