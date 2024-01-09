@@ -58,7 +58,6 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.doubleClickLabelAndClear();
   
         // Ingresa un nuevo nombre para la tarea y presiona la tecla "Enter".
-         //cy.get('.edit').type('MAY THE FORCE BE WITH YOU {enter}');
         todoReactPage.enterNewTaskNameAndPressEnter('MAY THE FORCE BE WITH YOU');
 
         // Verifica que el nombre de la tarea se actualice correctamente en la lista.
@@ -66,7 +65,7 @@ describe("Pruebas-todo-react", () => {
                
     });
 
-    it('5. Borrar tarea', () => {
+    it('5. Borrar la tarea', () => {
 
         // Agrega una tarea a la lista.
         todoReactPage.newTodo("Tarea 4: Borrar esta tarea");

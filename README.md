@@ -1,7 +1,1 @@
-# cypress-test-clase
-
-
-## Ejercicios de Flama Test
-
-
-**Grande Fran! Gracias 🙏** 
+# Portfolio of test case automation with Cypress.
