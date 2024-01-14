@@ -85,7 +85,7 @@ describe("Pruebas-todo-react", () => {
         // Agrega varias tareas a la lista, algunas completadas y otras no completadas.
         todoReactPage.newTodo("Llamar a Fer.");
         todoReactPage.newTodo("Hacer la Tarea.");
-        todoReactPage.newTodo("Escribir un discurso motivacional las medias.");
+        todoReactPage.newTodo("Escribir un discurso motivacional a las medias.");
         todoReactPage.newTodo("Hacerle una entrevista a las zapatillas.");
         todoReactPage.newTodo("Escribir la carta de agradecimiento.");
 
