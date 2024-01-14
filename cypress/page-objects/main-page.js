@@ -9,7 +9,7 @@ export class MainPage {
     };
 
     clickFormAuthentication() {
-        cy.get(':nth-child(22) > a').click()
+        cy.get(':nth-child(21) > a').click()
 
     };
 

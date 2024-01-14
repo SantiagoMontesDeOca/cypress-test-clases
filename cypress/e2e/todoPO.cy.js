@@ -106,7 +106,7 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.verifyCompletedTasksCount(3);
         todoReactPage.verifyTaskPresent('Hacer la Tarea');
         todoReactPage.verifyTaskPresent('Hacer la Tarea.');
-        todoReactPage.verifyTaskPresent('Escribir un discurso motivacional las medias.');
+        todoReactPage.verifyTaskPresent('Escribir un discurso motivacional a las medias.');
         todoReactPage.verifyTaskPresent('Escribir la carta de agradecimiento.');    
 
 
@@ -125,7 +125,7 @@ describe("Pruebas-todo-react", () => {
         todoReactPage.verifyIncompleteTasksCount(5);
         todoReactPage.verifyTaskPresent('Llamar a Fer.');
         todoReactPage.verifyTaskPresent('Hacer la Tarea.');
-        todoReactPage.verifyTaskPresent('Escribir un discurso motivacional las medias.');
+        todoReactPage.verifyTaskPresent('Escribir un discurso motivacional a las medias.');
         todoReactPage.verifyTaskPresent('Hacerle una entrevista a las zapatillas.');
         todoReactPage.verifyTaskPresent('Escribir la carta de agradecimiento.');
 
