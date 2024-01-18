@@ -20,7 +20,7 @@ describe("pruebas-shiftingContent", () => {
 
         example1_Menu_Element.click_example1_Menu_Element()
         
-        example1_Menu_Element_List.five_elements_list();
+        example1_Menu_Element_List.five_elements_list(5);
         
             
     });
