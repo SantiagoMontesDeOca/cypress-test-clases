@@ -2,7 +2,7 @@
 
 describe('Ejercicios Cypress TODO', () => {
   beforeEach(() => {
-    cy.visit('https://todomvc.com/examples/react/#/');
+    cy.visit('https://todomvc.com/examples/react/dist/');
     
   });
 
@@ -74,7 +74,7 @@ describe('Ejercicios Cypress TODO', () => {
 
       //Ingresa un nuevo nombre para la tarea y presiona la tecla "Enter".
       
-      cy.get('.edit').type('MAY THE FORCE BE WITH YOU{enter}');
+      cy.get('#todo-input').type('MAY THE FORCE BE WITH YOU{enter}');
 
       // Verifica que el nombre de la tarea se actualice correctamente en la lista.
 
@@ -120,8 +120,8 @@ describe('Ejercicios Cypress TODO', () => {
       cy.get(":nth-child(5) > .view > .toggle").should('be.checked');
      
       // Haz clic en el botón de filtro correspondiente a las tareas completadas. 
-      cy.get('[data-reactid=".0.2.1.4"] > a').click();
-            
+      cy.get('[data-testid="footer-navigation"] > :nth-child(3) > a').click();
+                  
       // Verifica que solo se muestren las tareas completadas en la lista.
       cy.get('.todo-list .completed').should('have.length', 3);
       cy.get('.todo-list li').contains('Hacer la Tarea.');
@@ -129,7 +129,7 @@ describe('Ejercicios Cypress TODO', () => {
       cy.get('.todo-list li').contains('Escribir la carta de agradecimiento.');
       
       //Haz clic en el botón de filtro correspondiente a las tareas no completadas.
-      cy.get('[data-reactid=".0.2.1.2"] > a').click();
+      cy.get('.selected').click();
       
       //Verifica que solo se muestren las tareas no completadas en la lista.
       cy.get('.todo-list li').should('have.length', 2);

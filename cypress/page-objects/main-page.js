@@ -18,6 +18,11 @@ export class MainPage {
     
     };
 
+    clickContextMenu(){
+        cy.get (':nth-child(7) > a').click()
+        
+    };
+
 
 
 };
